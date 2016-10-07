@@ -42,3 +42,8 @@ src/os/windows/ottdres.rc
 !/config.lib
 !*.in
 *.tmp
+
+libs/*
+projects/openttd_vs140.VC.db
+projects/openttd_vs140.VC.VC.opendb
+shared/*
