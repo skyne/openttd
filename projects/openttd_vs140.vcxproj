@@ -92,8 +92,12 @@
     <LocalDebuggerWorkingDirectory>$(ProjectDir)..\bin</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\balogh.andras.WM\Source\Repos\Git\OpenTTD\shared;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\balogh.andras.WM\Source\Repos\Git\OpenTTD\libs\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\shared;$(IncludePath)</IncludePath>
+    <LibraryPath>..\libs\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>..\shared;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>..\libs\x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
