@@ -3042,9 +3042,6 @@
     <ClCompile Include="..\src\thread\thread_win32.cpp">
       <Filter>Threading</Filter>
     </ClCompile>
-    <ClCompile Include="automigratebot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\automigratebot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -149,6 +149,15 @@ static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2)
 	return _settings_game.construction.max_heightlevel;
 }
 
+#include "automigratebot.h"
+static int32 ClickAutoMigrateRailsCheat(int32 p1, int32 p2)
+{
+	AutoMigrateRailsBot amrb = AutoMigrateRailsBot();
+	std::vector<const Station*> stations = amrb.SearchForStations(_current_company);
+	amrb.BuildRailLines(stations, _current_company);
+	return 1;
+}
+
 /** Available cheats. */
 enum CheatNumbers {
 	CHT_MONEY,           ///< Change amount of money.
@@ -159,6 +168,7 @@ enum CheatNumbers {
 	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
 	CHT_EDIT_MAX_HL,     ///< Edit maximum allowed heightlevel
 	CHT_CHANGE_DATE,     ///< Do time traveling.
+	CHT_AUTO_MIGRATE,
 
 	CHT_NUM_CHEATS,      ///< Number of cheats.
 };
@@ -192,6 +202,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
 	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.max_heightlevel, &_cheats.edit_max_hl.been_used, &ClickChangeMaxHlCheat   },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
+	{SLE_BOOL,  StringID(),                &_cheats.automigrate_rails.value,                                   &_cheats.automigrate_rails.been_used, &ClickAutoMigrateRailsCheat },
 };
 
 assert_compile(CHT_NUM_CHEATS == lengthof(_cheats_ui));
